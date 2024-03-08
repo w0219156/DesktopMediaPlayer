@@ -5,8 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG2500_A2_Chinook"
         mc:Ignorable="d"
-        Title="Chinook Music Store" Height="650" Width="900">
-    <Grid>
+        Title="Chinook Music Store" Height="650" Width="900"
+        Background="{DynamicResource MainWindowBackground}"
+    >
+    
+    <Window.Resources>
+        <ResourceDictionary>
 
-    </Grid>
+            <LinearGradientBrush x:Key="MainWindowBackground" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FFB57272" Offset="0.0"/>
+                <GradientStop Color="Purple" Offset="1.0"/>
+            </LinearGradientBrush>
+            
+            <BitmapImage x:Key="homeImage" UriSource="/images/home.png"></BitmapImage>
+            <BitmapImage x:Key="artistImage" UriSource="/images/artist.png"></BitmapImage>
+            <BitmapImage x:Key="trackImage" UriSource="/images/track.png"></BitmapImage>
+            <BitmapImage x:Key="albumImage" UriSource="/images/album.png"></BitmapImage>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="_Exit" Click="MenuItem_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Pages">
+                <MenuItem Header="Albums" Click="AlbumsButton_Click"></MenuItem>
+                <MenuItem Header="Artists" Click="ArtistsButton_Click"></MenuItem>
+                <MenuItem Header="Tracks" Click="TrackssButton_Click"></MenuItem>
+            </MenuItem>
+
+        </Menu>
+        <ToolBar DockPanel.Dock="Left">
+            <StackPanel Orientation="Vertical" Width="50">
+                <Button x:Name="HomeButton" Click="HomeButton_Click">
+                    <Image Source="{StaticResource homeImage}" ToolTip="Home"></Image>
+                </Button>
+                <Button x:Name="ArtistsButton" Click="ArtistsButton_Click">
+                    <Image Source="{StaticResource artistImage}" ToolTip="Artists"></Image>
+                </Button>
+                <Button x:Name="AlbumsButton" Click="AlbumsButton_Click">
+                    <Image Source="{StaticResource albumImage}" ToolTip="Albums"></Image>
+                </Button>
+                <Button x:Name="TracksButton" Click="TrackssButton_Click" ToolTip="Tracks">
+                    <Image Source="{StaticResource trackImage}"></Image>
+                </Button>
+            </StackPanel>
+        </ToolBar>
+        <Frame x:Name="mainFrame" Height="auto" Width="Auto" DockPanel.Dock="Bottom" NavigationUIVisibility="Hidden">
+
+        </Frame>
+    </DockPanel>
 </Window>
+
+    
+<!--  Attributions 
+    <a href="https://www.flaticon.com/free-icons/vinyl-record" title="vinyl record icons">Vinyl record icons created by Freepik - Flaticon
+    <a href="https://www.flaticon.com/free-icons/artist" title="artist icons">Artist icons created by Leremy - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/album" title="album icons">Album icons created by Freepik - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Sebastian Belalcazar - Flaticon</a>
+    </a>
+    -->
