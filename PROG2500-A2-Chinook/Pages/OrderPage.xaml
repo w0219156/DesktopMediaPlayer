@@ -25,25 +25,25 @@
                 <DataTemplate>
                     <Expander Header="{Binding FullName}">
                         <StackPanel>
-                            <TextBlock Text="{Binding Location}" Margin="20,0,0,0"/>
-                            <TextBlock Text="{Binding Country}" Margin="20,0,0,0"/>
-                            <TextBlock Text="{Binding Email}" Margin="20,0,0,0"/>
-                            <Expander Header="Invoices" Margin="20,0,0,0">
+                            <TextBlock Text="{Binding Location}"/>
+                            <TextBlock Text="{Binding Country}"/>
+                            <TextBlock Text="{Binding Email}"/>
+                            <Expander Header="Invoices" Style="{StaticResource ExpanderStyle}">
                                 <ListView ItemsSource="{Binding Invoices}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Margin="40,0,0,0">
-                                                <TextBlock>
-                                            <Run FontWeight="Bold" Text="Date: "/>
-                                            <Run Text="{Binding InvoiceDate, StringFormat={}{0:MM/dd/yyyy}, Mode=OneWay}"/>
+                                            <StackPanel Style="{StaticResource StackPanelStyle}">
+                                                <TextBlock Style="{StaticResource BoldTextStyle}">
+                                                    <Run Text="Date: "/>
+                                                    <Run Text="{Binding InvoiceDate, StringFormat={}{0:MM/dd/yyyy}, Mode=OneWay}"/>
                                                 </TextBlock>
-                                                <TextBlock>
-                                            <Run FontWeight="Bold" Text="Total: "/>
-                                            <Run Text="{Binding TotalAmount, StringFormat={}{0:C}, Mode=OneWay}"/>
+                                                <TextBlock Style="{StaticResource BoldTextStyle}">
+                                                    <Run Text="Total: "/>
+                                                    <Run Text="{Binding TotalAmount, StringFormat={}{0:C}, Mode=OneWay}"/>
                                                 </TextBlock>
-                                                <TextBlock>
-                                            <Run FontWeight="Bold" Text="Quantity: "/>
-                                            <Run Text="{Binding TrackCount, Mode=OneWay}"/>
+                                                <TextBlock Style="{StaticResource BoldTextStyle}">
+                                                    <Run Text="Quantity: "/>
+                                                    <Run Text="{Binding TrackCount, Mode=OneWay}"/>
                                                 </TextBlock>
                                             </StackPanel>
                                         </DataTemplate>

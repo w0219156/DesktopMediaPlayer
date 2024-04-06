@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROG2500_A2_Chinook.Data;
+using PROG2500_A2_Chinook.Models;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,21 +21,22 @@ namespace PROG2500_A2_Chinook.Pages
         private void LoadCustomerOrders(string search = "")
         {
             var customers = context.Customers
-                                   .Include(c => c.Invoices)
-                                   .ThenInclude(i => i.InvoiceLines)
-                                   .Where(c => string.IsNullOrEmpty(search) || (c.FirstName + " " + c.LastName).Contains(search))
-                                   .Select(c => new
+                                   .Include(customer => customer.Invoices)
+                                   .ThenInclude(invoice => invoice.InvoiceLines)
+                                   .Where(customer => string.IsNullOrEmpty(search) || (customer.FirstName + " " + customer.LastName).Contains(search))
+                                   .Select(customer => new
                                    {
-                                       FullName = c.LastName + ", " + c.FirstName,
-                                       Location = string.IsNullOrEmpty(c.State) ? $"{c.City}" : $"{c.City}, {c.State}",
-                                       c.Country,
-                                       c.Email,
-                                       Invoices = c.Invoices.Select(i => new
+                                       FullName = customer.LastName + ", " + customer.FirstName,
+                                       // Conditional to handle empty locations
+                                       Location = string.IsNullOrEmpty(customer.State) ? $"{customer.City}" : $"{customer.City}, {customer.State}",
+                                       customer.Country,
+                                       customer.Email,
+                                       Invoices = customer.Invoices.Select(invoice => new
                                        {
-                                           InvoiceDate = i.InvoiceDate,
-                                           TotalAmount = i.Total,
-                                           TrackCount = i.InvoiceLines.Count
-                                       }).ToList()
+                                           InvoiceDate = invoice.InvoiceDate,
+                                           TotalAmount = invoice.Total,
+                                           TrackCount = invoice.InvoiceLines.Count
+                                       }).ToList()  // Convert to a list
                                    })
                                    .ToList();
 

@@ -25,29 +25,26 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Key}" FontWeight="Bold" FontSize="18" Margin="5"/>
+                            <TextBlock Text="{Binding Key}" Style="{StaticResource HeaderTextStyle}"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
             </ListView.GroupStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Expander Header="{Binding Key}">
+                    <Expander Header="{Binding Key}" Style="{StaticResource ExpanderHeaderStyle}">
                         <ItemsControl ItemsSource="{Binding Artists}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <!-- Indent Artists -->
-                                    <Expander Header="{Binding ArtistName}" Margin="20,0,0,0">
+                                    <Expander Header="{Binding ArtistName}" Style="{StaticResource ExpanderHeaderStyle}">
                                         <ItemsControl ItemsSource="{Binding Albums}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <!-- Indent Albums -->
-                                                    <Expander Header="{Binding AlbumTitle}" Margin="40,0,0,0">
+                                                    <Expander Header="{Binding AlbumTitle}" Style="{StaticResource ExpanderHeaderStyle}">
                                                         <ItemsControl ItemsSource="{Binding Tracks}">
                                                             <ItemsControl.ItemTemplate>
                                                                 <DataTemplate>
-                                                                    <!-- Indent tracks -->
-                                                                    <TextBlock Text="{Binding}" Margin="60,0,0,0"/>
+                                                                    <TextBlock Text="{Binding}" Style="{StaticResource IndentedTextStyle}"/>
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
                                                         </ItemsControl>

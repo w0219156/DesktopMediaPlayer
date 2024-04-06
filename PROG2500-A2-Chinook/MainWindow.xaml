@@ -36,7 +36,7 @@
                 <MenuItem Header="Artists" Click="ArtistsButton_Click"></MenuItem>
                 <MenuItem Header="Tracks" Click="TrackssButton_Click"></MenuItem>
                 <MenuItem Header="Catalog" Click="CatalogButton_Click"></MenuItem>
-                <MenuItem Header="Catalog" Click="orderButton_Click"></MenuItem>
+                <MenuItem Header="Customer Orders" Click="orderButton_Click"></MenuItem>
             </MenuItem>
 
         </Menu>
