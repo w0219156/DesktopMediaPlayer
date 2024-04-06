@@ -26,20 +26,21 @@ namespace PROG2500_A2_Chinook.Pages
                                  .OrderBy(a => a.Name)
                                  .ToList();
 
-            var groupedData = artists.GroupBy(a => a.Name.Substring(0, 1).ToUpper())
-                                     .Select(g => new
-                                     {
-                                         Key = g.Key,
-                                         Artists = g.Select(a => new
-                                         {
-                                             ArtistName = a.Name,
-                                             Albums = a.Albums.Select(al => new
-                                             {
-                                                 AlbumTitle = al.Title,
-                                                 Tracks = al.Tracks.Select(t => t.Name)
-                                             })
-                                         })
-                                     }).ToList();
+            var groupedData = artists
+                .GroupBy(a => a.Name.Substring(0, 1).ToUpper())
+                .Select(g => new
+                {
+                    Key = $"{g.Key} ({g.Count()} Artists)",
+                    Artists = g.Select(artist => new
+                    {
+                        ArtistName = artist.Name,
+                        Albums = artist.Albums.Select(album => new
+                        {
+                            AlbumTitle = album.Title,
+                            Tracks = album.Tracks.Select(track => track.Name).ToList()
+                        }).ToList()
+                    }).ToList()
+                }).ToList();
 
             var collectionViewSource = (CollectionViewSource)this.FindResource("groupedCatalog");
             collectionViewSource.Source = groupedData;

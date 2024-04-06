@@ -24,7 +24,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="18" Margin="5"/>
+                            <TextBlock Text="{Binding Key}" FontWeight="Bold" FontSize="18" Margin="5"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -35,15 +35,18 @@
                         <ItemsControl ItemsSource="{Binding Artists}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Expander Header="{Binding ArtistName}">
+                                    <!-- Indent Artists -->
+                                    <Expander Header="{Binding ArtistName}" Margin="20,0,0,0">
                                         <ItemsControl ItemsSource="{Binding Albums}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Expander Header="{Binding AlbumTitle}">
+                                                    <!-- Indent Albums -->
+                                                    <Expander Header="{Binding AlbumTitle}" Margin="40,0,0,0">
                                                         <ItemsControl ItemsSource="{Binding Tracks}">
                                                             <ItemsControl.ItemTemplate>
                                                                 <DataTemplate>
-                                                                    <TextBlock Text="{Binding}" Margin="5"/>
+                                                                    <!-- Indent tracks -->
+                                                                    <TextBlock Text="{Binding}" Margin="60,0,0,0"/>
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
                                                         </ItemsControl>
