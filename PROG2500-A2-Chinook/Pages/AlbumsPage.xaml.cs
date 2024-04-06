@@ -35,5 +35,24 @@ namespace PROG2500_A2_Chinook.Pages
             albumVS.Source = context.Albums.Local.ToObservableCollection();
 
         }
+
+        private void OnSearchAlbumClick(object sender, RoutedEventArgs e)
+        {
+            var searchTerm = txtSearchAlbum.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                albumVS.Source = context.Albums.Local.ToObservableCollection();
+            }
+            else
+            {
+                var filteredAlbums = context.Albums
+                    .Where(a => a.Title.ToLower().Contains(searchTerm))
+                    .ToList();
+
+                albumVS.Source = filteredAlbums;
+            }
+        }
     }
 }
+

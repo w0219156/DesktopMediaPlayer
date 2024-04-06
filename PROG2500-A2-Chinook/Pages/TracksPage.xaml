@@ -15,26 +15,27 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
         <TextBlock Grid.Row="0" Text="Chinook Tracks" FontWeight="Bold" FontSize="20" Margin="10" Style="{StaticResource ModernTextBlock}"/>
 
+        <!-- Search Section -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10">
+            <TextBox x:Name="txtSearchTrack" Width="200" Margin="0,0,5,0"/>
+            <Button Content="Search" Click="OnSearchTrackClick"/>
+        </StackPanel>
 
-        <!-- Contained to allow for scrolling -->
-        <ListView Grid.Row="1" ItemsSource="{Binding Source={StaticResource tracksVS}}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource ModernTextBlock}">
-                        <Run Text="{Binding Name}" Foreground="Blue"/>
-                        <Run Text=" on " Foreground="Black"/>
-                        <Run Text="{Binding Album.Title}" Foreground="Purple"/>
-                        <Run Text=" for " Foreground="Black"/>
-                        <Run Text="{Binding UnitPrice, StringFormat='{}{0:C}'}" Foreground="Red"/>
-                        </TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <!-- ListView with GridView -->
+        <ListView Grid.Row="2" ItemsSource="{Binding Source={StaticResource tracksVS}}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Album" DisplayMemberBinding="{Binding Album.Title}"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding UnitPrice}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
     </Grid>
 </Page>

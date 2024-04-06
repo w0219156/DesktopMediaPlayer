@@ -21,6 +21,8 @@
             <BitmapImage x:Key="artistImage" UriSource="/images/artist.png"></BitmapImage>
             <BitmapImage x:Key="trackImage" UriSource="/images/track.png"></BitmapImage>
             <BitmapImage x:Key="albumImage" UriSource="/images/album.png"></BitmapImage>
+            <BitmapImage x:Key="catalogImage" UriSource="/images/catalog.png"></BitmapImage>
+            <BitmapImage x:Key="orderImage" UriSource="/images/order.png"></BitmapImage>
         </ResourceDictionary>
     </Window.Resources>
     
@@ -33,6 +35,8 @@
                 <MenuItem Header="Albums" Click="AlbumsButton_Click"></MenuItem>
                 <MenuItem Header="Artists" Click="ArtistsButton_Click"></MenuItem>
                 <MenuItem Header="Tracks" Click="TrackssButton_Click"></MenuItem>
+                <MenuItem Header="Catalog" Click="CatalogButton_Click"></MenuItem>
+                <MenuItem Header="Catalog" Click="orderButton_Click"></MenuItem>
             </MenuItem>
 
         </Menu>
@@ -50,6 +54,12 @@
                 <Button x:Name="TracksButton" Click="TrackssButton_Click" ToolTip="Tracks">
                     <Image Source="{StaticResource trackImage}"></Image>
                 </Button>
+                <Button x:Name="CatalogButton" Click="CatalogButton_Click" ToolTip="Catalog">
+                    <Image Source="{StaticResource catalogImage}"></Image>
+                </Button>
+                <Button x:Name="orderButton" Click="orderButton_Click" ToolTip="Orders">
+                    <Image Source="{StaticResource orderImage}"></Image>
+                </Button>
             </StackPanel>
         </ToolBar>
         <Frame x:Name="mainFrame" Height="auto" Width="Auto" DockPanel.Dock="Bottom" NavigationUIVisibility="Hidden">
@@ -64,5 +74,7 @@
     <a href="https://www.flaticon.com/free-icons/artist" title="artist icons">Artist icons created by Leremy - Flaticon</a>
     <a href="https://www.flaticon.com/free-icons/album" title="album icons">Album icons created by Freepik - Flaticon</a>
     <a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Sebastian Belalcazar - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/catalog" title="catalog icons">Catalog icons created by orvipixel - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/order" title="order icons">Order icons created by vectorsmarket15 - Flaticon</a>
     </a>
     -->

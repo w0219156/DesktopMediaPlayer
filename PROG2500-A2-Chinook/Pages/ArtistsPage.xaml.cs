@@ -35,5 +35,23 @@ namespace PROG2500_A2_Chinook.Pages
             artistsVS.Source = context.Artists.Local.ToObservableCollection();
 
         }
+
+        private void OnSearchClick(object sender, RoutedEventArgs e)
+        {
+            var searchTerm = txtSearch.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                artistsVS.Source = context.Artists.Local.ToObservableCollection();
+            }
+            else
+            {
+                var filteredArtists = context.Artists
+                    .Where(a => a.Name.ToLower().Contains(searchTerm))
+                    .ToList();
+
+                artistsVS.Source = filteredArtists;
+            }
+        }
     }
 }

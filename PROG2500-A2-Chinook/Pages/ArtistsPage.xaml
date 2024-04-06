@@ -13,18 +13,20 @@
     </Page.Resources>
 
     <Grid>
-      
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-        
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-          
         </Grid.RowDefinitions>
 
         <TextBlock Text="Chinook Artists" FontWeight="Bold" FontSize="20" Margin="10" Grid.Row="0"/>
 
-        
-        <ListView ItemsSource="{Binding Source={StaticResource artistsVS}}" Grid.Row="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10">
+            <TextBox x:Name="txtSearch" Width="200" Margin="0,0,5,0"/>
+            <Button Content="Search" Click="OnSearchClick"/>
+        </StackPanel>
+
+        <ListView ItemsSource="{Binding Source={StaticResource artistsVS}}" Grid.Row="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ArtistId}"/>

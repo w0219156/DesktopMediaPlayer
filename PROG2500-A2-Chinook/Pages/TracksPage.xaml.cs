@@ -2,6 +2,7 @@
 using PROG2500_A2_Chinook.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PROG2500_A2_Chinook.Models;
 
 namespace PROG2500_A2_Chinook.Pages
 {
@@ -40,6 +42,26 @@ namespace PROG2500_A2_Chinook.Pages
             context.Tracks.Include(track => track.Album).Load();
 
             tracksVS.Source = context.Tracks.Local.ToObservableCollection();
+        }
+
+        private void OnSearchTrackClick(object sender, RoutedEventArgs e)
+        {
+            var searchTerm = txtSearchTrack.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var tracks = context.Tracks.Include(t => t.Album).ToList();
+                tracksVS.Source = new ObservableCollection<Track>(tracks);
+            }
+            else
+            {
+                var filteredTracks = context.Tracks
+                                            .Include(t => t.Album)
+                                            .Where(t => t.Name.ToLower().Contains(searchTerm))
+                                            .ToList();
+
+                tracksVS.Source = new ObservableCollection<Track>(filteredTracks);
+            }
         }
     }
 }

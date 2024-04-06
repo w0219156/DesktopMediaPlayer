@@ -11,7 +11,9 @@
   <ItemGroup>
     <None Remove="Images\album.png" />
     <None Remove="Images\artist.png" />
+    <None Remove="Images\catalog.png" />
     <None Remove="Images\home.png" />
+    <None Remove="Images\order.png" />
     <None Remove="Images\track.png" />
   </ItemGroup>
 
@@ -35,9 +37,11 @@
     <Resource Include="Images\artist.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\catalog.png" />
     <Resource Include="Images\home.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\order.png" />
     <Resource Include="Images\track.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

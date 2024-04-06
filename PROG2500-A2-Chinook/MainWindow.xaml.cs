@@ -49,6 +49,16 @@ namespace PROG2500_A2_Chinook
             mainFrame.NavigationService.Navigate(new Pages.TracksPage());
         }
 
+        private void CatalogButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.Navigate(new Pages.CatalogPage());
+        }
+
+        private void orderButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.Navigate(new Pages.OrderPage());
+        }
+
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
