@@ -1,14 +1,59 @@
 ﻿<Page x:Class="PROG2500_A2_Chinook.Pages.OrderPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PROG2500_A2_Chinook.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="OrderPage">
+      Title="Customer Orders">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="customersViewSource" />
+    </Page.Resources>
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
+            <TextBlock Text="Customer Order Search" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox x:Name="searchBox" Width="200" Margin="0,0,5,0" VerticalAlignment="Center"/>
+            <Button Content="Search" Click="Search_Click" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Source={StaticResource customersViewSource}}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Expander Header="{Binding FullName}">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Location}" Margin="20,0,0,0"/>
+                            <TextBlock Text="{Binding Country}" Margin="20,0,0,0"/>
+                            <TextBlock Text="{Binding Email}" Margin="20,0,0,0"/>
+                            <Expander Header="Invoices" Margin="20,0,0,0">
+                                <ListView ItemsSource="{Binding Invoices}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="40,0,0,0">
+                                                <TextBlock>
+                                            <Run FontWeight="Bold" Text="Date: "/>
+                                            <Run Text="{Binding InvoiceDate, StringFormat={}{0:MM/dd/yyyy}, Mode=OneWay}"/>
+                                                </TextBlock>
+                                                <TextBlock>
+                                            <Run FontWeight="Bold" Text="Total: "/>
+                                            <Run Text="{Binding TotalAmount, StringFormat={}{0:C}, Mode=OneWay}"/>
+                                                </TextBlock>
+                                                <TextBlock>
+                                            <Run FontWeight="Bold" Text="Quantity: "/>
+                                            <Run Text="{Binding TrackCount, Mode=OneWay}"/>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Expander>
+                        </StackPanel>
+                    </Expander>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
